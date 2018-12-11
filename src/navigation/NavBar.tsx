@@ -1,5 +1,6 @@
 import * as React from "react";
 import * as classnames from "classnames"
+import { Link } from "react-router-dom"
 
 export type NavBarLink = { title: string, path: string };
 export type NavBarOwnProps = { links: NavBarLink[] };
@@ -31,7 +32,9 @@ export class NavBar extends React.Component<NavBarProps, NavBarState> {
                 </div>
 
                 <div className={classnames("navbar-menu", { ["is-active"]: this.state.menuActive })}>
-                    {this.props.children}
+                    {this.props.links.map(
+                        ({title, path}) => (<Link to={path} className="navbar-item" key={path}>{title}</Link>)
+                    )}
                 </div>
             </nav>
         )

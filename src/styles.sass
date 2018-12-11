@@ -9,35 +9,19 @@
 html,
 body,
 #app
-    display: flex
     height: 100%
     width: 100%
-    align-items: center
-    justify-content: center
     background: $white-ter
 
-.card.has-text-centered
-    .card-header,
-    .card-content,
-    .card-footer
-        justify-content: center
-        align-items: center
-
+.page-container
+    display: flex
+    flex-direction: column
+    justify-content: center
+    align-items: center
+    min-height: 50%
+    padding: 1em
     h1
-        font-size: 1.75rem
         font-weight: bold
-
-.card.is-wide
-    min-width: 15rem
-
-.card-header
-    padding: 1.75rem 0
-
-.card-content
-    padding: 3.5rem 0
-
-.card-footer
-    padding: 1rem 0
-    border: none
-    font-size: 0.9rem
-    color: lighten(black, 50%)
+    section
+        border: .1em solid grey;
+        padding: 2em
