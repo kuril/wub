@@ -1,9 +1,9 @@
 import * as React from "react";
 import * as classnames from "classnames"
 import { Link } from "react-router-dom"
+import { NavBarLink } from "types/wub";
 
-export type NavBarLink = { title: string, path: string };
-export type NavBarOwnProps = { links: NavBarLink[] };
+type NavBarOwnProps = { links: NavBarLink[] };
 type NavBarProps = NavBarOwnProps;
 type NavBarState = { menuActive: boolean };
 
