@@ -4,6 +4,7 @@ import { RootState } from "types/wub";
 import { Dispatch } from "redux";
 import { createArticleStartLoadingAction, createArticleSetResultAction } from "../../ducks";
 import classnames = require("classnames");
+import { loadArticles } from "../../api";
 
 type ButtonStateProps = { loading: boolean }
 type ButtonDispatchProps = { loadArticles: () => void }
@@ -26,15 +27,8 @@ const mapStateToProps = (state: RootState) => ({
 
 const mapDispatchToProps = (dispatch: Dispatch) => ({
     loadArticles: () => {
-        //emulation of loading process
-        //start
         dispatch(createArticleStartLoadingAction())
-        // finish in 3 sec
-        setTimeout(() => dispatch(createArticleSetResultAction([
-            { title: "First", author: "Anonimus", body: ".........(*\/*)........." },
-            { title: "Second", author: "Anonimus", body: "Contrary to popular belief, Lorem Ipsum is not simply random text." },
-            { title: "Third", author: "Anonimus", body: "The standard chunk of Lorem Ipsum used since the 1500s is reproduced below for those interested." },
-        ])), 3000)
+        loadArticles().then(result => dispatch(createArticleSetResultAction(result)))
     }
 })
 

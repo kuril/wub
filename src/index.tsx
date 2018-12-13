@@ -1,18 +1,22 @@
 import * as React from "react";
 import * as ReactDOM from "react-dom";
 import { BrowserRouter, Route } from "react-router-dom";
-import { createStore, combineReducers } from 'redux'
+import { createStore, combineReducers, applyMiddleware } from 'redux'
+import thunk from "redux-thunk";
 import "./styles.sass";
 import { NavigationItem, RootState } from "types/wub";
-import { NavBar, Home, Page1, Page2, Articles } from "./components";
+import { NavBar, Home, Page1, Page2, Articles, Comments } from "./components";
 import {
-    userReducer,
-    articleReducer,
+    userReducer as user,
+    articleReducer as article,
+    commentReducer as comments,
     articleInitialState,
     userInitialState,
     UserAction,
     ArticleAction,
-    createUserNameAction
+    createUserNameAction,
+    commentsInitialState,
+    CommentAction,
 } from "./ducks"
 import { Provider } from "react-redux";
 
@@ -26,19 +30,21 @@ const pages: NavigationItem[] = [
 const initialRootState: RootState = {
     user: userInitialState,
     article: articleInitialState,
+    comments: commentsInitialState,
 }
 
-const rootReducer = combineReducers<RootState>({ user: userReducer, article: articleReducer })
+const rootReducer = combineReducers<RootState>({ user, article, comments })
 
-type RootAction = UserAction | ArticleAction
+type RootAction = UserAction | ArticleAction | CommentAction
 
 const store = createStore<RootState, RootAction, {}, {}>(
     rootReducer,
-    initialRootState
+    initialRootState,
+    applyMiddleware(thunk),
 )
 
 const { getState, dispatch } = store;
-if (getState().user.username == null ) {
+if (getState().user.username == null) {
     dispatch(createUserNameAction("testUser"));
 }
 
@@ -47,7 +53,9 @@ class Layout extends React.Component {
         return (
             <React.Fragment>
                 <NavBar links={pages} />
-                {pages.map(({ path, component }) => (<Route path={path} component={component} key={path} />))}
+                {pages.map(({ path, component }) =>
+                    (<Route path={path} component={component} key={path} />))}
+                <Route path="/comments/:id" component={Comments} />
             </React.Fragment>
         );
     }

@@ -1,6 +1,7 @@
 import * as React from "react";
 import { connect } from 'react-redux';
 import { Article, RootState } from "types/wub";
+import { Link } from "react-router-dom";
 
 type ArticlesListStateProps = { list: Article[], isLoading: boolean, loadedAt: Date | null }
 type ArticlesListProps = ArticlesListStateProps
@@ -16,6 +17,7 @@ const ArticlesList: React.SFC<ArticlesListProps> = ({ list, isLoading, loadedAt 
                         <strong>{article.title}</strong>
                         <small>{article.author}</small>
                         <p>{article.body}</p>
+                        <Link to={`/comments/${article.id}`}><small>comments</small></Link>
                     </div>
                 </article>))
         }</div>}

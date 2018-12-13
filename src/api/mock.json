@@ -1,0 +1,72 @@
+{
+    "articles": [
+        {
+            "id": 1,
+            "title": "First",
+            "author": "anonymus",
+            "body": "But I must explain to you how all this mistaken idea of denouncing pleasure and praising pain was born"
+        },
+        {
+            "id": 2,
+            "title": "Second",
+            "author": "anonymus",
+            "body": "Contrary to popular belief, Lorem Ipsum is not simply random text."
+        },
+        {
+            "id": 3,
+            "title": "Third",
+            "author": "anonymus",
+            "body": "The standard chunk of Lorem Ipsum used since the 1500s is reproduced below for those interested."
+        }
+    ],
+    "comments": [
+        {
+            "id": 1,
+            "parent": null,
+            "author": "anonymus",
+            "body": "Sed ut perspiciatis unde omnis iste natus"
+        },
+        {
+            "id": 2,
+            "parent": null,
+            "author": "anonymus",
+            "body": "Nam libero tempore, cum soluta nobis est eligendi optio cumque nihil impedit quo minus id quod maxime placeat facere possimus"
+        },
+        {
+            "id": 3,
+            "parent": null,
+            "author": "anonymus",
+            "body": "omnis voluptas assumenda est, omnis dolor repellendus"
+        },
+        {
+            "id": 4,
+            "parent": null,
+            "author": "anonymus",
+            "body": "Itaque earum rerum hic tenetur a sapiente delectus"
+        },
+        {
+            "id": 5,
+            "parent": null,
+            "author": "anonymus",
+            "body": "Temporibus autem quibusdam et aut officiis debitis aut rerum necessitatibus saepe eveniet ut et voluptates repudiandae sint et molestiae non recusandaes"
+        },
+        {
+            "id": 6,
+            "parent": 1,
+            "author": "anonymus",
+            "body": "omnis voluptas assumenda est, omnis dolor repellendus"
+        },
+        {
+            "id": 7,
+            "parent": 2,
+            "author": "anonymus",
+            "body": "Quis autem vel eum iure reprehenderit qui in ea voluptate velit esse quam nihil molestiae consequatur, vel illum qui dolorem eum fugiat quo voluptas nulla pariatur?"
+        },
+        {
+            "id": 8,
+            "parent": 2,
+            "author": "anonymus",
+            "body": " he rejects pleasures to secure other greater pleasures"
+        }
+    ]
+}

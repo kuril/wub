@@ -26,6 +26,7 @@ module.exports = {
     extensions: ['.ts', '.tsx', '.js']
   },
   output: {
+    publicPath: '/',
     filename: 'bundle.js',
     path: path.resolve(__dirname, 'build')
   },
@@ -34,5 +35,11 @@ module.exports = {
     new HtmlWebpackPlugin({
       template: "./templates/index.html"
     })
-  ]
+  ],
+  devServer: {
+    proxy: [{
+      path: '/api/*',
+      target: 'http://localhost:3000'
+    }],
+  }
 };
