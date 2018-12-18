@@ -1,0 +1,21 @@
+// Jest Snapshot v1, https://goo.gl/fbAQLP
+
+exports[`ActionButton component renders correctly 1`] = `
+<button
+  className="button is-primary"
+  disabled={false}
+  onClick={[MockFunction]}
+>
+  Load Articles
+</button>
+`;
+
+exports[`ActionButton component renders correctly when loading is true 1`] = `
+<button
+  className="button is-primary is-loading"
+  disabled={true}
+  onClick={[MockFunction]}
+>
+  Load Articles
+</button>
+`;

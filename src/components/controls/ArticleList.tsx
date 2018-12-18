@@ -6,7 +6,7 @@ import { ArticleView } from "./ArticleView";
 type ArticlesListStateProps = { list: Article[], isLoading: boolean, loadedAt: Date | null }
 type ArticlesListProps = ArticlesListStateProps
 
-const ArticlesList: React.SFC<ArticlesListProps> = ({ list, isLoading, loadedAt }) =>
+export const ArticlesList: React.SFC<ArticlesListProps> = ({ list, isLoading, loadedAt }) =>
     (<div className="page-container">
         {list.length < 1 && !isLoading && <small>No articles</small>}
         {isLoading && <small>Loading articles</small>}

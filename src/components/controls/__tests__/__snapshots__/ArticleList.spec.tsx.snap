@@ -1,0 +1,87 @@
+// Jest Snapshot v1, https://goo.gl/fbAQLP
+
+exports[`ActionList component renders correctly 1`] = `
+<div
+  className="page-container"
+>
+  <div
+    className="box"
+  >
+    <article
+      className="media"
+    >
+      <div
+        className="media-content"
+      >
+        <strong>
+          article1
+        </strong>
+        <small>
+          test author
+        </small>
+        <p>
+          article1 body
+        </p>
+        <a
+          href="/comments/1"
+          onClick={[Function]}
+        >
+          <small>
+            comments
+          </small>
+        </a>
+      </div>
+    </article>
+    <article
+      className="media"
+    >
+      <div
+        className="media-content"
+      >
+        <strong>
+          article2
+        </strong>
+        <small>
+          test author
+        </small>
+        <p>
+          article2 body
+        </p>
+        <a
+          href="/comments/2"
+          onClick={[Function]}
+        >
+          <small>
+            comments
+          </small>
+        </a>
+      </div>
+    </article>
+    <article
+      className="media"
+    >
+      <div
+        className="media-content"
+      >
+        <strong>
+          article3
+        </strong>
+        <small>
+          test author
+        </small>
+        <p>
+          article2 body
+        </p>
+        <a
+          href="/comments/3"
+          onClick={[Function]}
+        >
+          <small>
+            comments
+          </small>
+        </a>
+      </div>
+    </article>
+  </div>
+</div>
+`;

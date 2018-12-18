@@ -10,7 +10,7 @@ type ButtonStateProps = { loading: boolean }
 type ButtonDispatchProps = { loadArticles: () => void }
 type ButtonProps = ButtonStateProps & ButtonDispatchProps;
 
-const ActionButton: React.SFC<ButtonProps> = ({ loading, loadArticles }) => {
+export const ActionButton: React.SFC<ButtonProps> = ({ loading, loadArticles }) => {
     return (
         <button className={classnames(
             "button", "is-primary",
