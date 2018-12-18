@@ -8,7 +8,7 @@
   "scripts": {
     "start": "run-p dev-server mock-server",
     "build": "webpack --mode=production",
-    "dev-server": "webpack-dev-server --mode=development --history-api-fallback --progress --quiet",
+    "dev-server": "webpack-dev-server --mode=development --history-api-fallback --progress",
     "mock-server": "json-server -q -w src/api/mock.json --routes src/api/routes.json"
   },
   "dependencies": {

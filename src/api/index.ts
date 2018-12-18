@@ -21,6 +21,9 @@ const loadResource = <R, P=void>(path: string, params?: P): Promise<R> =>
 export const loadArticles =
     () => loadResource<Article[]>("/api/articles")
 
+export const loadArticleById =
+    (id: string) => loadResource<Article>(`/api/articles/${id}`)
+
 export const loadComments =
     (id: number) => loadResource<Commentary[], number>(`/api/comments?article=${id}`, id)
 

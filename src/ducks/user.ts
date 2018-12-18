@@ -1,5 +1,5 @@
 import { Reducer, Action } from 'redux';
-import { UserState } from 'types/wub';
+import { UserState, RootState } from 'types/wub';
 
 const USER_SET_NAME = "user/setName"
 const USER_SET_IS_PREMIUM = "user/setIsPremium"
@@ -29,10 +29,13 @@ const userReducer: Reducer<UserState> = (state:UserState = userInitialState, act
     return state;
 }
 
+const selectUserName = (state:RootState) => state.user.username;
+
 export {
     userInitialState,
     createUserNameAction,
     createUserIsPremiumAction,
     userReducer,
     UserAction,
+    selectUserName,
 }

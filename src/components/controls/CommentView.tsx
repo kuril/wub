@@ -2,29 +2,22 @@ import * as React from "react";
 import { CommentPosted, RootState } from "types/wub";
 import { postCommentOperaion as postComment } from "../../ducks";
 import { connect } from "react-redux";
+import { CommentInput } from "./CommentInput";
 
 type CommentViewOwnProps = { posted: CommentPosted };
-type CommentViewStateProps = { username: string }
-type CommentViewDispatchProps = { postComment: (posted: CommentPosted) => void };
+type CommentViewStateProps = { }
+type CommentViewDispatchProps = { postComment: typeof postComment };
 type CommentViewState = { showInputForm: boolean };
 type CommentViewProps = CommentViewOwnProps & CommentViewStateProps & CommentViewDispatchProps;
 
 class CommentView extends React.Component<CommentViewProps, CommentViewState> {
-    private textArea: HTMLTextAreaElement = null
+    
     constructor(props: CommentViewProps) {
         super(props);
         this.state = { showInputForm: false };
         this.typeReply = this.typeReply.bind(this);
         this.cancel = this.cancel.bind(this);
-        this.postReply = this.postReply.bind(this);
-        this.initTextArea = this.initTextArea.bind(this);
-    }
-
-    initTextArea(element: HTMLTextAreaElement) {
-        this.textArea = element;
-        if (this.textArea) {
-            this.textArea.focus();
-        }
+        this.postReply = this.postReply.bind(this);        
     }
 
     typeReply() {
@@ -32,22 +25,16 @@ class CommentView extends React.Component<CommentViewProps, CommentViewState> {
     }
 
     cancel() {
-        this.textArea.value = "";
         this.setState({ showInputForm: false });
     }
 
-    postReply() {
+    postReply(text: string) {
         this.setState({ showInputForm: false });
-        const { posted: { comment, article }, postComment, username } = this.props;
+        const { posted: { comment, article }, postComment } = this.props;
         postComment({
             article,
-            comment: {
-                id: -1,
-                parent: comment.parent || comment.id,
-                body: this.textArea.value,
-                author: username,
-                requestId: Date.now() + Math.random()
-            },
+            parent: comment.parent || comment.id,
+            body: text,
         })
     }
 
@@ -65,20 +52,8 @@ class CommentView extends React.Component<CommentViewProps, CommentViewState> {
                     <strong>{comment.author}</strong>
                     <p>{comment.body}</p>
                     {!showInputForm && <a onClick={this.typeReply}><small>reply</small></a>}
-                    {showInputForm && <div className="field">
-                        <p className="control">
-                            <textarea className="textarea"
-                                placeholder="Add a comment..."
-                                ref={this.initTextArea}>
-                            </textarea>
-                        </p>
-                        <p className="control">
-                            <button className="button"
-                                onClick={this.postReply}>Post comment</button>
-                            <button className="button"
-                                onClick={this.cancel}>Cancel</button>
-                        </p>
-                    </div>}
+                    {showInputForm && <CommentInput
+                        postReply={this.postReply} cancel={this.cancel}/>}
                 </div>
                 {children}
             </div>
@@ -86,14 +61,7 @@ class CommentView extends React.Component<CommentViewProps, CommentViewState> {
     }
 };
 
-const mapStateToProps = (state: RootState) => ({
-    username: state.user.username,
-})
-
 const mapDispatchToProps = ({ postComment });
 
 export const CommentViewConnected =
-    connect<CommentViewStateProps, CommentViewDispatchProps, CommentViewOwnProps>(
-        mapStateToProps,
-        mapDispatchToProps
-    )(CommentView)
+    connect<null, CommentViewDispatchProps, CommentViewOwnProps>(null, mapDispatchToProps)(CommentView)

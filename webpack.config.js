@@ -38,8 +38,8 @@ module.exports = {
   ],
   devServer: {
     proxy: [{
-      path: '/api/*',
-      target: 'http://localhost:3000'
+      path: '/api/**',
+      target: 'http://localhost:3000',
     }],
   }
 };

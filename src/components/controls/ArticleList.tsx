@@ -1,7 +1,7 @@
 import * as React from "react";
 import { connect } from 'react-redux';
 import { Article, RootState } from "types/wub";
-import { Link } from "react-router-dom";
+import { ArticleView } from "./ArticleView";
 
 type ArticlesListStateProps = { list: Article[], isLoading: boolean, loadedAt: Date | null }
 type ArticlesListProps = ArticlesListStateProps
@@ -12,14 +12,7 @@ const ArticlesList: React.SFC<ArticlesListProps> = ({ list, isLoading, loadedAt 
         {isLoading && <small>Loading articles</small>}
         {list.length > 0 && !isLoading && <div className="box">{
             list.map(
-                (article, i) => (<article key={i} className="media">
-                    <div className="media-content">
-                        <strong>{article.title}</strong>
-                        <small>{article.author}</small>
-                        <p>{article.body}</p>
-                        <Link to={`/comments/${article.id}`}><small>comments</small></Link>
-                    </div>
-                </article>))
+                (article, i) => (<ArticleView key={i} article={article} />))
         }</div>}
         {loadedAt && !isLoading && <small>Last updated at: {loadedAt.toLocaleString()}</small>}
     </div>)
